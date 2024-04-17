@@ -1,7 +1,5 @@
-import sys
+import sys,cv2,numpy
 from pathlib import Path
-import cv2
-import numpy
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtGui import QPixmap, QImage
