@@ -31,7 +31,7 @@ class MainWindow(QMainWindow):
         self.origin_img = cv2.imread(self.image_path)
         # 获取图像的维度信息
         self.height, self.width, self.channels = self.origin_img.shape
-        # 当前处理完成的图像与原始图像相同
+        # 存储到result_img准备进行处理
         self.result_img = self.origin_img
         # 显示预加载的图像
         self.display_origin_image()
