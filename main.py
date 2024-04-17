@@ -198,8 +198,7 @@ class MainWindow(QMainWindow):
 
         else :
             pass
-        
-        print(self.result_img.shape)
+
         self.display_result_image()
 
     def geometric_transform(self):
@@ -223,7 +222,6 @@ class MainWindow(QMainWindow):
 
         # 先复制一份原始图像
         temp_img = self.result_img.copy()
-        print(len(temp_img.shape))
 
         if (self.ui.noise_Box.currentText() == "高斯噪声"):
             mean = 0  # 噪声均值

@@ -159,7 +159,7 @@ class Ui_MainWindow(object):
         self.origin_img.setText("")
         self.result_img.setText("")
         self.save_button.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58\u56fe\u50cf", None))
-        self.load_button.setText(QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u56fe\u50cf", None))
+        self.load_button.setText(QCoreApplication.translate("MainWindow", u"\u66f4\u6539\u56fe\u50cf", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u5904\u7406\u524d\u56fe\u50cf", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u5904\u7406\u540e\u56fe\u50cf", None))
         self.color_space_Box.setItemText(0, QCoreApplication.translate("MainWindow", u"GRAY", None))
@@ -195,6 +195,6 @@ class Ui_MainWindow(object):
 
         self.edge_button.setText(QCoreApplication.translate("MainWindow", u"\u8fb9\u7f18\u68c0\u6d4b", None))
         self.draw_button.setText(QCoreApplication.translate("MainWindow", u"\u5c55\u793a\u76f4\u65b9\u56fe", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"\u76f4\u65b9\u56fe\u7ed8\u5236", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"\u7070\u5ea6\u76f4\u65b9\u56fe", None))
     # retranslateUi
 

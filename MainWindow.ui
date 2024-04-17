@@ -99,7 +99,7 @@
      </font>
     </property>
     <property name="text">
-     <string>选择图像</string>
+     <string>更改图像</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -459,7 +459,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>直方图绘制</string>
+     <string>灰度直方图</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
