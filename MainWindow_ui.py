@@ -194,7 +194,7 @@ class Ui_MainWindow(object):
         self.edge_Box.setItemText(2, QCoreApplication.translate("MainWindow", u"Canny", None))
 
         self.edge_button.setText(QCoreApplication.translate("MainWindow", u"\u8fb9\u7f18\u68c0\u6d4b", None))
-        self.draw_button.setText(QCoreApplication.translate("MainWindow", u"\u56fe\u50cf\u7ed8\u5236", None))
+        self.draw_button.setText(QCoreApplication.translate("MainWindow", u"\u5c55\u793a\u76f4\u65b9\u56fe", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"\u76f4\u65b9\u56fe\u7ed8\u5236", None))
     # retranslateUi
 

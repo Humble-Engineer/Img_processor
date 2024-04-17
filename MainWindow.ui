@@ -446,7 +446,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>图像绘制</string>
+     <string>展示直方图</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">

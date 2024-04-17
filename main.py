@@ -1,7 +1,9 @@
 import sys
+from pathlib import Path
+
 import cv2
 import numpy as np
-from pathlib import Path
+import matplotlib.pyplot as plt
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtGui import QPixmap, QImage
@@ -63,7 +65,7 @@ class MainWindow(QMainWindow):
         # 绑定傅里叶变换按钮的点击事件
         self.ui.edge_button.clicked.connect(self.edge_detect)
         # 绑定图像直方图按钮的点击事件
-        # self.ui.draw_button.clicked.connect(self.darw_hist)
+        self.ui.draw_button.clicked.connect(self.darw_hist)
 
     def load_image(self):
         """
@@ -302,6 +304,30 @@ class MainWindow(QMainWindow):
             pass
 
         self.display_result_image()
+
+    def darw_hist(self):
+        # 获取图像数据
+        img = self.result_img.copy()
+
+        # 检查图像是否为灰度图像
+        if len(img.shape) == 3 and img.shape[2] == 3:  # 彩色图像
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # 转为灰度图像
+
+        # 计算直方图
+        hist, bins = np.histogram(img.flatten(), 256, [0, 256])
+
+        # 绘制直方图
+        plt.figure(figsize=(10, 6))
+        plt.hist(img.flatten(), bins=bins, color='gray')
+        plt.title('Image Histogram')
+        plt.xlabel('Pixel Intensity')
+        plt.ylabel('Frequency')
+        plt.xlim([0, 256])
+        plt.xticks(np.arange(0, 257, 32))
+        plt.yticks(np.arange(0, hist.max() + 1, hist.max() // 10))
+
+        # 显示图形
+        plt.show()
 
 
 if __name__ == "__main__":
