@@ -124,7 +124,6 @@ class MainWindow(QMainWindow):
         """
         显示原始图像
         """
-        
         if self.origin_img is not None:
             # 将图像从 BGR 转换为 RGB 格式以适应 Qt
             img_rgb = cv2.cvtColor(self.origin_img, cv2.COLOR_BGR2RGB)
@@ -177,7 +176,9 @@ class MainWindow(QMainWindow):
             print(f"Failed to display result image!")
 
     def change_color_space(self):
-
+        """
+        图像颜色空间转换
+        """
         if (self.ui.color_space_Box.currentText() == "GRAY"):
             try:
                 self.result_img = cv2.cvtColor(self.result_img, cv2.COLOR_BGR2GRAY)
@@ -202,6 +203,9 @@ class MainWindow(QMainWindow):
         self.display_result_image()
 
     def geometric_transform(self):
+        """
+        图像几何变换
+        """
         if (self.ui.geometric_Box.currentText() == "水平翻转"):
                 self.result_img = cv2.flip(self.result_img, 1)
         
@@ -219,7 +223,9 @@ class MainWindow(QMainWindow):
         self.display_result_image()
 
     def add_noise(self):
-
+        """
+        图像加噪
+        """
         # 先复制一份原始图像
         temp_img = self.result_img.copy()
 
@@ -257,7 +263,9 @@ class MainWindow(QMainWindow):
         self.display_result_image()
 
     def image_blur(self):
-
+        """
+        图像模糊
+        """
         if (self.ui.blur_Box.currentText() == "均值滤波"):
             self.result_img = cv2.blur(self.result_img, (3, 3))
         
@@ -277,7 +285,9 @@ class MainWindow(QMainWindow):
         self.display_result_image()
 
     def edge_detect(self):
-
+        """
+        图像边缘检测
+        """
         if (self.ui.edge_Box.currentText() == "Laplacian"):
             # 使用Laplacian算子进行边缘检测
             laplacian_img = cv2.Laplacian(self.result_img, cv2.CV_64F)
@@ -304,6 +314,9 @@ class MainWindow(QMainWindow):
         self.display_result_image()
 
     def darw_hist(self):
+        """
+        绘制图像直方图
+        """
         # 获取图像数据
         img = self.result_img.copy()
 
