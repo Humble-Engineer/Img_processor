@@ -41,7 +41,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="processed_img">
+   <widget class="QLabel" name="result_img">
     <property name="geometry">
      <rect>
       <x>360</x>
@@ -75,7 +75,7 @@
      </font>
     </property>
     <property name="text">
-     <string>保存图片</string>
+     <string>保存图像</string>
     </property>
    </widget>
    <widget class="QPushButton" name="load_button">
@@ -99,33 +99,7 @@
      </font>
     </property>
     <property name="text">
-     <string>加载图片</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="rgb2gray_button">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>360</y>
-      <width>100</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>转为灰度图像</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="rgb2hsv_button">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>440</y>
-      <width>100</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>转到HSV空间</string>
+     <string>选择图像</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -164,6 +138,60 @@
     </property>
     <property name="text">
      <string>处理后图像</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="color_space_Box">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>385</y>
+      <width>100</width>
+      <height>55</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>GRAY</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>HSV</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>YCrCb</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="change_color_space_button">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>440</y>
+      <width>100</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>转换色彩空间</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>360</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>目标色彩空间</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
   </widget>
