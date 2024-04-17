@@ -27,6 +27,8 @@ class MainWindow(QMainWindow):
         self.origin_img = cv2.imread("materials\cartoon.png")
         # 获取图像的维度信息
         self.height, self.width, self.channels = self.origin_img.shape
+        # 当前处理完成的图像与原始图像相同
+        self.result_img = self.origin_img
         # 显示预加载的图像
         self.display_origin_image()
 
@@ -45,6 +47,8 @@ class MainWindow(QMainWindow):
         self.ui.load_button.clicked.connect(self.load_image)
         # 绑定保存图像按钮的点击事件
         self.ui.save_button.clicked.connect(self.save_image)
+        # 绑定重置图像按钮的点击事件
+        self.ui.reset_button.clicked.connect(self.reset_image)
 
         # 绑定图像颜色空间转换按钮的点击事件
         self.ui.change_color_space_button.clicked.connect(self.change_color_space)
@@ -67,8 +71,11 @@ class MainWindow(QMainWindow):
             self.origin_img = cv2.imread(str(image_path))
             # 获取图像的维度信息
             self.height, self.width, self.channels = self.origin_img.shape
+            # 当前处理完成的图像与原始图像相同
+            self.result_img = self.origin_img
             # 显示原始图像
             self.display_origin_image()
+            
 
     def save_image(self):
         """
@@ -93,6 +100,13 @@ class MainWindow(QMainWindow):
         # 将QPixmap保存为图像文件
         if not current_pixmap.save(save_path, "PNG"):
             print(f"Failed to save image to {save_path}")
+
+    def reset_image(self):
+        """
+        重置图像，恢复到原始状态。
+        """
+        self.result_img = self.origin_img
+        self.display_result_image()
 
     def display_origin_image(self):
         """
@@ -153,16 +167,25 @@ class MainWindow(QMainWindow):
     def change_color_space(self):
 
         if (self.ui.color_space_Box.currentText() == "HSV"):
-            self.result_img = cv2.cvtColor(self.origin_img, cv2.COLOR_BGR2HSV)
-        
+            try:
+                self.result_img = cv2.cvtColor(self.origin_img, cv2.COLOR_BGR2HSV)
+            except:
+                pass
+
         elif (self.ui.color_space_Box.currentText() == "GRAY"):
-            self.result_img = cv2.cvtColor(self.origin_img, cv2.COLOR_BGR2GRAY)
+            try:
+                self.result_img = cv2.cvtColor(self.origin_img, cv2.COLOR_BGR2GRAY)
+            except:
+                pass
 
         elif (self.ui.color_space_Box.currentText() == "YCrCb"):
-            self.result_img = cv2.cvtColor(self.origin_img, cv2.COLOR_BGR2YCrCb)
+            try:
+                self.result_img = cv2.cvtColor(self.origin_img, cv2.COLOR_BGR2YCrCb)
+            except:
+                pass
 
         else :
-            self.result_img = self.origin_img
+            pass
 
         self.display_result_image()
 

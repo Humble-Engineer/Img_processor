@@ -23,7 +23,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(700, 570)
+        MainWindow.resize(699, 572)
         MainWindow.setMinimumSize(QSize(80, 80))
         font = QFont()
         font.setPointSize(10)
@@ -40,7 +40,7 @@ class Ui_MainWindow(object):
         self.result_img.setFrameShape(QFrame.Shape.Panel)
         self.save_button = QPushButton(self.centralwidget)
         self.save_button.setObjectName(u"save_button")
-        self.save_button.setGeometry(QRect(10, 440, 100, 80))
+        self.save_button.setGeometry(QRect(10, 415, 100, 50))
         font1 = QFont()
         font1.setPointSize(10)
         font1.setBold(True)
@@ -50,7 +50,7 @@ class Ui_MainWindow(object):
         self.load_button = QPushButton(self.centralwidget)
         self.load_button.setObjectName(u"load_button")
         self.load_button.setEnabled(True)
-        self.load_button.setGeometry(QRect(10, 360, 100, 80))
+        self.load_button.setGeometry(QRect(10, 360, 100, 50))
         self.load_button.setFont(font1)
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
@@ -74,12 +74,16 @@ class Ui_MainWindow(object):
         self.change_color_space_button.setGeometry(QRect(110, 440, 100, 80))
         self.label_3 = QLabel(self.centralwidget)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(110, 360, 101, 31))
+        self.label_3.setGeometry(QRect(110, 360, 100, 31))
         self.label_3.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.reset_button = QPushButton(self.centralwidget)
+        self.reset_button.setObjectName(u"reset_button")
+        self.reset_button.setGeometry(QRect(10, 470, 100, 50))
+        self.reset_button.setFont(font1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 700, 33))
+        self.menubar.setGeometry(QRect(0, 0, 699, 33))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -104,5 +108,6 @@ class Ui_MainWindow(object):
 
         self.change_color_space_button.setText(QCoreApplication.translate("MainWindow", u"\u8f6c\u6362\u8272\u5f69\u7a7a\u95f4", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u76ee\u6807\u8272\u5f69\u7a7a\u95f4", None))
+        self.reset_button.setText(QCoreApplication.translate("MainWindow", u"\u653e\u5f03\u66f4\u6539", None))
     # retranslateUi
 
