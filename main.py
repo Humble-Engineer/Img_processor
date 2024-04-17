@@ -1,4 +1,6 @@
-import sys,cv2,numpy
+import sys
+import cv2
+import numpy as np
 from pathlib import Path
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
@@ -23,7 +25,8 @@ class MainWindow(QMainWindow):
         self.band()  # 调用band方法进行进一步的初始化或设置
 
         # 默认预加载的图像
-        self.origin_img = cv2.imread("materials\cartoon.png")
+        self.image_path = "materials\cartoon.png"
+        self.origin_img = cv2.imread(self.image_path)
         # 获取图像的维度信息
         self.height, self.width, self.channels = self.origin_img.shape
         # 当前处理完成的图像与原始图像相同
@@ -53,6 +56,16 @@ class MainWindow(QMainWindow):
         self.ui.color_space_button.clicked.connect(self.change_color_space)
         # 绑定几何变换按钮的点击事件
         self.ui.geometric_button.clicked.connect(self.geometric_transform)
+        # 绑定添加噪声按钮的点击事件
+        self.ui.noise_button.clicked.connect(self.add_noise)
+        # 绑定图像滤波按钮的点击事件
+        # self.ui.blur_button.clicked.connect(self.image_blur)
+        # 绑定傅里叶变换按钮的点击事件
+        # self.ui.fft_button.clicked.connect(self.fft_transform)
+        # 绑定图像直方图按钮的点击事件
+        # self.ui.draw_button.clicked.connect(self.darw_hist)
+
+
 
     def load_image(self):
         """
@@ -66,9 +79,9 @@ class MainWindow(QMainWindow):
         # 如果用户选择了文件，则加载并显示图像
         if selected_file:
             # 将路径转换为Path对象
-            image_path = Path(selected_file)
+            self.image_path = Path(selected_file)
             # 使用 OpenCV 读取图像，并保存为属性
-            self.origin_img = cv2.imread(str(image_path))
+            self.origin_img = cv2.imread(str(self.image_path))
             # 获取图像的维度信息
             self.height, self.width, self.channels = self.origin_img.shape
             # 当前处理完成的图像与原始图像相同
@@ -165,27 +178,28 @@ class MainWindow(QMainWindow):
 
     def change_color_space(self):
 
-        if (self.ui.color_space_Box.currentText() == "HSV"):
+        if (self.ui.color_space_Box.currentText() == "GRAY"):
             try:
-                self.result_img = cv2.cvtColor(self.origin_img, cv2.COLOR_BGR2HSV)
+                self.result_img = cv2.cvtColor(self.result_img, cv2.COLOR_BGR2GRAY)
             except:
                 pass
 
-        elif (self.ui.color_space_Box.currentText() == "GRAY"):
+        elif (self.ui.color_space_Box.currentText() == "HSV"):
             try:
-                self.result_img = cv2.cvtColor(self.origin_img, cv2.COLOR_BGR2GRAY)
+                self.result_img = cv2.cvtColor(self.result_img, cv2.COLOR_BGR2HSV)
             except:
                 pass
 
         elif (self.ui.color_space_Box.currentText() == "YCrCb"):
             try:
-                self.result_img = cv2.cvtColor(self.origin_img, cv2.COLOR_BGR2YCrCb)
+                self.result_img = cv2.cvtColor(self.result_img, cv2.COLOR_BGR2YCrCb)
             except:
                 pass
 
         else :
             pass
-
+        
+        print(self.result_img.shape)
         self.display_result_image()
 
     def geometric_transform(self):
@@ -203,6 +217,44 @@ class MainWindow(QMainWindow):
 
         else :
             pass
+        self.display_result_image()
+
+    def add_noise(self):
+
+        # 先复制一份原始图像
+        temp_img = self.result_img.copy()
+        print(len(temp_img.shape))
+
+        if (self.ui.noise_Box.currentText() == "高斯噪声"):
+            mean = 0  # 噪声均值
+            variance = 300  # 噪声方差，调整以控制噪声强度
+
+            noise = np.random.normal(mean, variance ** 0.5, temp_img.shape)
+            noisy_img = np.clip(temp_img + noise, 0, 255).astype(np.uint8)
+
+            self.result_img = noisy_img
+
+        elif (self.ui.noise_Box.currentText() == "椒盐噪声"):
+
+            probability = 0.0001  # 椒盐噪声出现的概率，调整以控制噪声密度
+
+            # 对于灰度图像
+            if len(temp_img.shape) == 2:
+                mask = np.random.randint(0, 2, size=temp_img.shape, dtype=np.uint8) * probability
+                temp_img[mask == 1] = 0  # 将随机位置的像素设为黑色（椒）
+                temp_img[mask == 0] = 255  # 将随机位置的像素设为白色（盐）
+
+            # 对于彩色图像
+            elif len(temp_img.shape) == 3:
+                for channel in range(temp_img.shape[2]):
+                    mask = np.random.randint(0, 2, size=temp_img.shape[:2], dtype=np.uint8) * probability
+                    temp_img[:, :, channel][mask == 1] = 0  # 将随机位置的像素设为黑色（椒）
+                    temp_img[:, :, channel][mask == 0] = 255  # 将随机位置的像素设为白色（盐）
+                
+                self.result_img = temp_img  # 更新处理后的图像
+        else :
+            pass
+
         self.display_result_image()
 
 if __name__ == "__main__":

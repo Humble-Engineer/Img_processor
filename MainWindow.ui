@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>702</width>
-    <height>580</height>
+    <width>700</width>
+    <height>570</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -188,7 +188,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>目标色彩空间</string>
+     <string>空间类型</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -212,7 +212,7 @@
      </font>
     </property>
     <property name="text">
-     <string>放弃更改</string>
+     <string>恢复原图</string>
     </property>
    </widget>
    <widget class="QComboBox" name="geometric_Box">
@@ -268,7 +268,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>几何变换方式</string>
+     <string>变换方式</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -327,7 +327,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>图像模糊</string>
+     <string>模糊方法</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -343,7 +343,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>模拟噪声</string>
+     <string>噪声样式</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -361,11 +361,6 @@
     <item>
      <property name="text">
       <string>高斯噪声</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>斑点噪声</string>
      </property>
     </item>
     <item>
@@ -476,7 +471,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>702</width>
+     <width>700</width>
      <height>33</height>
     </rect>
    </property>
