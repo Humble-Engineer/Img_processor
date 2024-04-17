@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>699</width>
-    <height>572</height>
+    <width>702</width>
+    <height>582</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -165,7 +165,7 @@
      </property>
     </item>
    </widget>
-   <widget class="QPushButton" name="change_color_space_button">
+   <widget class="QPushButton" name="color_space_button">
     <property name="geometry">
      <rect>
       <x>110</x>
@@ -215,13 +215,268 @@
      <string>放弃更改</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="geometric_Box">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>385</y>
+      <width>100</width>
+      <height>55</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>水平翻转</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>竖直翻转</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>顺时针旋转</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>逆时针旋转</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="geometric_button">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>440</y>
+      <width>100</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>几何变换</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>360</y>
+      <width>100</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>几何变换方式</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="blur_Box">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>385</y>
+      <width>100</width>
+      <height>55</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>均值滤波</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>中值滤波</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>高斯滤波</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>二维卷积</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="blur_button">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>440</y>
+      <width>100</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>图像模糊</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>360</y>
+      <width>100</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>图像模糊方法</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>360</y>
+      <width>100</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>模拟生成噪声</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="noise_Box">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>385</y>
+      <width>100</width>
+      <height>55</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>高斯噪声</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>斑点噪声</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>椒盐噪声</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="noise_button">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>440</y>
+      <width>100</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>添加噪声</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>360</y>
+      <width>100</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>傅里叶变换</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="fft_Box">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>385</y>
+      <width>100</width>
+      <height>55</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>频谱图</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>高通滤波器</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>低通滤波器</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="fft_button">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>440</y>
+      <width>100</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>傅里叶变换</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="draw_button">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>385</y>
+      <width>80</width>
+      <height>135</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>图像绘制</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>360</y>
+      <width>100</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>直方图绘制</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>699</width>
+     <width>702</width>
      <height>33</height>
     </rect>
    </property>

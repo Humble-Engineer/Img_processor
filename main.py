@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 import cv2
+import numpy
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtGui import QPixmap, QImage
@@ -51,8 +52,9 @@ class MainWindow(QMainWindow):
         self.ui.reset_button.clicked.connect(self.reset_image)
 
         # 绑定图像颜色空间转换按钮的点击事件
-        self.ui.change_color_space_button.clicked.connect(self.change_color_space)
-
+        self.ui.color_space_button.clicked.connect(self.change_color_space)
+        # 绑定几何变换按钮的点击事件
+        self.ui.geometric_button.clicked.connect(self.geometric_transform)
 
     def load_image(self):
         """
@@ -75,7 +77,6 @@ class MainWindow(QMainWindow):
             self.result_img = self.origin_img
             # 显示原始图像
             self.display_origin_image()
-            
 
     def save_image(self):
         """
@@ -187,6 +188,23 @@ class MainWindow(QMainWindow):
         else :
             pass
 
+        self.display_result_image()
+
+    def geometric_transform(self):
+        if (self.ui.geometric_Box.currentText() == "水平翻转"):
+                self.result_img = cv2.flip(self.result_img, 1)
+        
+        elif (self.ui.geometric_Box.currentText() == "竖直翻转"):
+                self.result_img = cv2.flip(self.result_img, 0)
+        
+        elif (self.ui.geometric_Box.currentText() == "顺时针旋转"):
+                self.result_img = cv2.rotate(self.result_img, cv2.ROTATE_90_CLOCKWISE)
+
+        elif (self.ui.geometric_Box.currentText() == "逆时针旋转"):
+                self.result_img = cv2.rotate(self.result_img, cv2.ROTATE_90_COUNTERCLOCKWISE)
+
+        else :
+            pass
         self.display_result_image()
 
 if __name__ == "__main__":
