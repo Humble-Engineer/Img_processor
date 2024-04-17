@@ -314,7 +314,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>图像模糊</string>
+     <string>滤波处理</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -327,7 +327,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>模糊方法</string>
+     <string>滤波方法</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -392,13 +392,13 @@
      </rect>
     </property>
     <property name="text">
-     <string>傅里叶变换</string>
+     <string>边缘检测算子</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QComboBox" name="fft_Box">
+   <widget class="QComboBox" name="edge_Box">
     <property name="geometry">
      <rect>
       <x>510</x>
@@ -409,21 +409,21 @@
     </property>
     <item>
      <property name="text">
-      <string>频谱图</string>
+      <string>Laplacian</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>高通滤波器</string>
+      <string>Sobel</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>低通滤波器</string>
+      <string>Canny</string>
      </property>
     </item>
    </widget>
-   <widget class="QPushButton" name="fft_button">
+   <widget class="QPushButton" name="edge_button">
     <property name="geometry">
      <rect>
       <x>510</x>
@@ -433,7 +433,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>傅里叶变换</string>
+     <string>边缘检测</string>
     </property>
    </widget>
    <widget class="QPushButton" name="draw_button">

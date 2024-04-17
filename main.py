@@ -59,13 +59,11 @@ class MainWindow(QMainWindow):
         # 绑定添加噪声按钮的点击事件
         self.ui.noise_button.clicked.connect(self.add_noise)
         # 绑定图像滤波按钮的点击事件
-        # self.ui.blur_button.clicked.connect(self.image_blur)
+        self.ui.blur_button.clicked.connect(self.image_blur)
         # 绑定傅里叶变换按钮的点击事件
-        # self.ui.fft_button.clicked.connect(self.fft_transform)
+        self.ui.edge_button.clicked.connect(self.edge_detect)
         # 绑定图像直方图按钮的点击事件
         # self.ui.draw_button.clicked.connect(self.darw_hist)
-
-
 
     def load_image(self):
         """
@@ -227,7 +225,7 @@ class MainWindow(QMainWindow):
 
         if (self.ui.noise_Box.currentText() == "高斯噪声"):
             mean = 0  # 噪声均值
-            variance = 300  # 噪声方差，调整以控制噪声强度
+            variance = 500  # 噪声方差，调整以控制噪声强度
 
             noise = np.random.normal(mean, variance ** 0.5, temp_img.shape)
             noisy_img = np.clip(temp_img + noise, 0, 255).astype(np.uint8)
@@ -236,7 +234,7 @@ class MainWindow(QMainWindow):
 
         elif (self.ui.noise_Box.currentText() == "椒盐噪声"):
 
-            probability = 0.0001  # 椒盐噪声出现的概率，调整以控制噪声密度
+            probability = 0.01  # 调整椒盐噪声出现的概率以减弱噪声效果
 
             # 对于灰度图像
             if len(temp_img.shape) == 2:
@@ -250,12 +248,61 @@ class MainWindow(QMainWindow):
                     mask = np.random.randint(0, 2, size=temp_img.shape[:2], dtype=np.uint8) * probability
                     temp_img[:, :, channel][mask == 1] = 0  # 将随机位置的像素设为黑色（椒）
                     temp_img[:, :, channel][mask == 0] = 255  # 将随机位置的像素设为白色（盐）
-                
-                self.result_img = temp_img  # 更新处理后的图像
+
+            self.result_img = temp_img  # 更新处理后的图像
+
         else :
             pass
 
         self.display_result_image()
+
+    def image_blur(self):
+
+        if (self.ui.blur_Box.currentText() == "均值滤波"):
+            self.result_img = cv2.blur(self.result_img, (3, 3))
+        
+        elif (self.ui.blur_Box.currentText() == "中值滤波"):
+            self.result_img = cv2.medianBlur(self.result_img, 3)
+        
+        elif (self.ui.blur_Box.currentText() == "高斯滤波"):
+            self.result_img = cv2.GaussianBlur(self.result_img, (5, 5), 0.6)
+
+        elif (self.ui.blur_Box.currentText() == "二维卷积"):
+            kernel = np.ones((3, 3)) / 9
+            self.result_img = cv2.filter2D(self.result_img, -1, kernel, borderType=cv2.BORDER_CONSTANT)
+
+        else :
+            pass
+
+        self.display_result_image()
+
+    def edge_detect(self):
+
+        if (self.ui.edge_Box.currentText() == "Laplacian"):
+            # 使用Laplacian算子进行边缘检测
+            laplacian_img = cv2.Laplacian(self.result_img, cv2.CV_64F)
+            laplacian_img = np.uint8(np.absolute(laplacian_img) * 255 / np.max(laplacian_img))
+            self.result_img = laplacian_img
+
+        elif (self.ui.edge_Box.currentText() == "Sobel"):
+            # 使用Sobel算子进行边缘检测
+            sobel_x = cv2.Sobel(self.result_img, cv2.CV_64F, 1, 0, ksize=3)
+            sobel_y = cv2.Sobel(self.result_img, cv2.CV_64F, 0, 1, ksize=3)
+            sobel_img = np.sqrt(sobel_x ** 2 + sobel_y ** 2)
+            sobel_img = np.uint8(sobel_img * 255 / np.max(sobel_img))
+            self.result_img = sobel_img
+
+        elif (self.ui.edge_Box.currentText() == "Canny"):
+            # 使用Canny算子进行边缘检测
+            blurred_img = cv2.GaussianBlur(self.result_img, (5, 5), 0.6)
+            canny_img = cv2.Canny(blurred_img, 50, 150)
+            self.result_img = canny_img
+
+        else:
+            pass
+
+        self.display_result_image()
+
 
 if __name__ == "__main__":
     # 创建 QApplication 实例
