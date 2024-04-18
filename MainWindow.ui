@@ -442,11 +442,11 @@
       <x>610</x>
       <y>385</y>
       <width>80</width>
-      <height>135</height>
+      <height>55</height>
      </rect>
     </property>
     <property name="text">
-     <string>展示直方图</string>
+     <string>灰度直方图</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">
@@ -459,10 +459,23 @@
      </rect>
     </property>
     <property name="text">
-     <string>灰度直方图</string>
+     <string>图像属性</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="fft_button">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>440</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>灰度fft频谱</string>
     </property>
    </widget>
   </widget>

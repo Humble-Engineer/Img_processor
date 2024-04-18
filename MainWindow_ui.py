@@ -135,11 +135,14 @@ class Ui_MainWindow(object):
         self.edge_button.setGeometry(QRect(510, 440, 100, 80))
         self.draw_button = QPushButton(self.centralwidget)
         self.draw_button.setObjectName(u"draw_button")
-        self.draw_button.setGeometry(QRect(610, 385, 80, 135))
+        self.draw_button.setGeometry(QRect(610, 385, 80, 55))
         self.label_8 = QLabel(self.centralwidget)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setGeometry(QRect(600, 360, 100, 31))
         self.label_8.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.fft_button = QPushButton(self.centralwidget)
+        self.fft_button.setObjectName(u"fft_button")
+        self.fft_button.setGeometry(QRect(610, 440, 80, 80))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -194,7 +197,8 @@ class Ui_MainWindow(object):
         self.edge_Box.setItemText(2, QCoreApplication.translate("MainWindow", u"Canny", None))
 
         self.edge_button.setText(QCoreApplication.translate("MainWindow", u"\u8fb9\u7f18\u68c0\u6d4b", None))
-        self.draw_button.setText(QCoreApplication.translate("MainWindow", u"\u5c55\u793a\u76f4\u65b9\u56fe", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"\u7070\u5ea6\u76f4\u65b9\u56fe", None))
+        self.draw_button.setText(QCoreApplication.translate("MainWindow", u"\u7070\u5ea6\u76f4\u65b9\u56fe", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"\u56fe\u50cf\u5c5e\u6027", None))
+        self.fft_button.setText(QCoreApplication.translate("MainWindow", u"\u7070\u5ea6fft\u9891\u8c31", None))
     # retranslateUi
 
