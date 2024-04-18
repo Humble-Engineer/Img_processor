@@ -162,7 +162,7 @@ class Ui_MainWindow(object):
         self.origin_img.setText("")
         self.result_img.setText("")
         self.save_button.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58\u56fe\u50cf", None))
-        self.load_button.setText(QCoreApplication.translate("MainWindow", u"\u66f4\u6539\u56fe\u50cf", None))
+        self.load_button.setText(QCoreApplication.translate("MainWindow", u"\u52a0\u8f7d\u56fe\u50cf", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u5904\u7406\u524d\u56fe\u50cf", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u5904\u7406\u540e\u56fe\u50cf", None))
         self.color_space_Box.setItemText(0, QCoreApplication.translate("MainWindow", u"GRAY", None))

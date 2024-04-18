@@ -11,6 +11,8 @@ from PySide6.QtGui import QPixmap, QImage
 # 编译UI文件：PySide6-uic demo.ui -o ui_demo.py
 from MainWindow_ui import Ui_MainWindow
 
+
+
 class MainWindow(QMainWindow):
     """
     主窗口类，用于显示图像。
@@ -26,15 +28,15 @@ class MainWindow(QMainWindow):
 
         self.band()  # 调用band方法进行进一步的初始化或设置
 
-        # 默认预加载的图像
-        self.image_path = "materials\cartoon.png"
-        self.origin_img = cv2.imread(self.image_path)
-        # 获取图像的维度信息
-        self.height, self.width, self.channels = self.origin_img.shape
-        # 存储到result_img准备进行处理
-        self.result_img = self.origin_img
-        # 显示预加载的图像
-        self.display_origin_image()
+        # # 默认预加载的图像
+        # self.image_path = "materials\cartoon_rgb.png"
+        # self.origin_img = cv2.imread(self.image_path)
+        # # 获取图像的维度信息
+        # self.height, self.width, self.channels = self.origin_img.shape
+        # # 存储到result_img准备进行处理
+        # self.result_img = self.origin_img
+        # # 显示预加载的图像
+        # self.display_origin_image()
 
     def band(self):
         """
@@ -62,12 +64,11 @@ class MainWindow(QMainWindow):
         self.ui.noise_button.clicked.connect(self.add_noise)
         # 绑定图像滤波按钮的点击事件
         self.ui.blur_button.clicked.connect(self.image_blur)
-
         # 绑定边缘检测按钮的点击事件
         self.ui.edge_button.clicked.connect(self.edge_detect)
+
         # 绑定图像直方图按钮的点击事件
         self.ui.draw_button.clicked.connect(self.darw_hist)
-
         # 绑定傅里叶变换按钮的点击事件
         self.ui.fft_button.clicked.connect(self.fast_fft)
 

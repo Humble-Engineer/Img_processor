@@ -99,7 +99,7 @@
      </font>
     </property>
     <property name="text">
-     <string>更改图像</string>
+     <string>加载图像</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
