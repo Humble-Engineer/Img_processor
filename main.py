@@ -1,3 +1,5 @@
+# pyinstaller -F -w --icon=./icons/toolkit.png main.py
+
 import sys
 from pathlib import Path
 
@@ -6,12 +8,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
-from PySide6.QtGui import QPixmap, QImage
+from PySide6.QtGui import QPixmap, QImage, QIcon
 
-# 编译UI文件：PySide6-uic demo.ui -o ui_demo.py
 from ui.MainWindow_ui import Ui_MainWindow
-
-
 
 class MainWindow(QMainWindow):
     """
@@ -397,6 +396,9 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
     # 创建 QApplication 实例
     app = QApplication(sys.argv)
+
+    icon = r'icons\toolkit.png'
+    app.setWindowIcon(QIcon(icon))
 
     # 创建主窗口并显示
     main_window = MainWindow()
