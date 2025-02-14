@@ -9,7 +9,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtGui import QPixmap, QImage
 
 # 编译UI文件：PySide6-uic demo.ui -o ui_demo.py
-from MainWindow_ui import Ui_MainWindow
+from ui.MainWindow_ui import Ui_MainWindow
 
 
 
@@ -29,7 +29,7 @@ class MainWindow(QMainWindow):
         self.band()  # 调用band方法进行进一步的初始化或设置
 
         # # 默认预加载的图像
-        # self.image_path = "materials\cartoon_rgb.png"
+        # self.image_path = "./materials/lena_rgb.png"
         # self.origin_img = cv2.imread(self.image_path)
         # # 获取图像的维度信息
         # self.height, self.width, self.channels = self.origin_img.shape
@@ -189,19 +189,16 @@ class MainWindow(QMainWindow):
                 self.result_img = cv2.cvtColor(self.result_img, cv2.COLOR_BGR2GRAY)
             except:
                 pass
-
         elif (self.ui.color_space_Box.currentText() == "HSV"):
             try:
                 self.result_img = cv2.cvtColor(self.result_img, cv2.COLOR_BGR2HSV)
             except:
                 pass
-
         elif (self.ui.color_space_Box.currentText() == "YCrCb"):
             try:
                 self.result_img = cv2.cvtColor(self.result_img, cv2.COLOR_BGR2YCrCb)
             except:
                 pass
-
         else :
             pass
 
